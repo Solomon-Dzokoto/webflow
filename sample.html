@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+.testimonial-container {
+  position: relative;
+  width: 400px;
+  height: 200px;
+  margin: auto;
+  font-family: Arial, sans-serif;
+}
+
+.testimonial {
+  display: none;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.testimonial.active {
+  display: block;
+}
+
+.quote {
+  font-size: 1.2em;
+  margin-bottom: 15px;
+}
+
+.author {
+  font-size: 1em;
+  color: #555;
+}
+
+.controls {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+}
+
+.prev-arrow, .next-arrow {
+  cursor: pointer;
+  font-size: 1.5em;
+  padding: 10px;
+  user-select: none;
+  color: #333;
+}
+
+.prev-arrow:hover, .next-arrow:hover {
+  color: #000;
+}
+
+</style>
+<body>
+  <div class="testimonial-container">
+  <div class="testimonial active">
+    <p class="quote">"Your website is the gateway to your business and you need full control over the design function and branded experience. Webflow has given our marketing team the freedom to build without compromising on our vision, which is critical in our fast-paced industry"</p>
+    <p class="author">Meghan Keaney Anderson<br>Head of Marketing, Jasper</p>
+  </div>
+  <!-- Additional testimonials can go here -->
+  <div class="testimonial">
+    <p class="quote">"Another testimonial text goes here."</p>
+    <p class="author">Author Name<br>Title, Company</p>
+  </div>
+  <!-- Add more testimonials as needed -->
+
+  <div class="controls">
+    <span class="prev-arrow" onclick="prevTestimonial()">&#10094;</span>
+    <span class="next-arrow" onclick="nextTestimonial()">&#10095;</span>
+  </div>
+</div>
+<script>
+  let currentIndex = 0;
+const testimonials = document.querySelectorAll('.testimonial');
+
+function showTestimonial(index) {
+  testimonials.forEach((testimonial, i) => {
+    testimonial.classList.toggle('active', i === index);
+  });
+}
+
+function nextTestimonial() {
+  currentIndex = (currentIndex + 1) % testimonials.length;
+  showTestimonial(currentIndex);
+}
+
+function prevTestimonial() {
+  currentIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
+  showTestimonial(currentIndex);
+}
+
+// Initially display the first testimonial
+showTestimonial(currentIndex);
+
+</script>
+</body>
+</html>
