@@ -1045,6 +1045,7 @@ footer{
    }
    .footer__items{
     flex-direction: row;
+    gap: 1rem;
     justify-content: space-between;
    }
   }
